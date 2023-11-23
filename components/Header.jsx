@@ -1,6 +1,16 @@
 import React from "react"
-import { Link, NavLink } from "react-router-dom"
+import { Link, NavLink, Navigate } from "react-router-dom"
 import imageUrl from "/assets/images/avatar-icon.png"
+
+// function Abc(){
+//     return(<h1>askdhfasdhfkjashdfkahsdf</h1>)
+// }
+
+// function VanLogo(text) {
+//     return (
+//         <Link className="site-logo" to="/">{text}</Link>
+//     )
+// }
 
 export default function Header() {
     const activeStyles = {
@@ -9,12 +19,18 @@ export default function Header() {
         color: "#161616"
     }
 
+
     function fakeLogOut() {
         localStorage.removeItem("loggedin")
     }
 
+    const isSignIn = localStorage.getItem("loggedin")
+    console.log(isSignIn)
+
     return (
         <header>
+            {/* {Abc()} */}
+            {/* { VanLogo("#VanLife") } */}
             <Link className="site-logo" to="/">#VanLife</Link>
             <nav>
                 <NavLink
@@ -35,13 +51,13 @@ export default function Header() {
                 >
                     Vans
                 </NavLink>
-                <Link to="login" className="login-link">
+                <Link to={isSignIn === null? "/host": "login"} className="login-link">
                     <img
                         src={imageUrl}
                         className="login-icon"
                     />
                 </Link>
-                <button className="delete-credentials" onClick={fakeLogOut}>X</button>
+                <button className="delete-credentials" onClick={fakeLogOut}>Log out</button>
             </nav>
         </header>
     )
