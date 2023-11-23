@@ -1,5 +1,5 @@
 import React from "react"
-import { Link, NavLink, Navigate } from "react-router-dom"
+import { Link, NavLink } from "react-router-dom"
 import imageUrl from "/assets/images/avatar-icon.png"
 
 // function Abc(){
@@ -11,22 +11,17 @@ import imageUrl from "/assets/images/avatar-icon.png"
 //         <Link className="site-logo" to="/">{text}</Link>
 //     )
 // }
-
 export default function Header() {
     const activeStyles = {
         fontWeight: "bold",
         textDecoration: "underline",
         color: "#161616"
     }
-
-
     function fakeLogOut() {
         localStorage.removeItem("loggedin")
     }
 
     const isSignIn = localStorage.getItem("loggedin")
-    console.log(isSignIn)
-
     return (
         <header>
             {/* {Abc()} */}
